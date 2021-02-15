@@ -36,7 +36,18 @@ import {createStackNavigator} from '@react-navigation/stack';
 import RouteNav1 from './component/Adminnavigator/AdDrawerNavigator';
 import AdminAnnouncements from './component/AdminAnnouncements';
 import AdminEvents  from './component/AdminEvents';
-
+import CreatAnnouncment from './component/Announcements/CreatAnnouncement';
+import AllAnnouncment from './component/Announcements/GetAllAnnouncements';
+import CreatEvent from './component/Events/CreateEvents'
+import AllEvents from './component/Events/GetAllEvents';
+import UpdateSpecificAnnoncement from './component/Announcements/UpdateSpecificAnnouncement'
+import GetSpecificAnnoncement from './component/Announcements/GetSpecificAnnoincment'
+import DeleteSpecificAnnoncement from './component/Announcements/DeleteAnnouncement'
+import Services from './component/Services';
+import UpdateSpecificEvent from './component/Events/UpdfateSpecificEvent'
+import GetSpecificEvent from './component/Events/GetSpecificEvent'
+import DeleteEvent from './component/Events/DeleteEvents'
+import Events from './component/Events'
 
 const Stack = createStackNavigator();
 
@@ -95,8 +106,13 @@ const MainApp = () => {
           options={{headerShown: false}}
         />
         <Stack.Screen
-          name="Announcements"
+          name="Announcement"
           component={Announcements}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Events"
+          component={Events}
           options={{headerShown: false}}
         />
         <Stack.Screen
@@ -129,7 +145,63 @@ const MainApp = () => {
           component={AdminEvents}
           options={{headerShown: false}}
         />
+         <Stack.Screen
+          name="CreatAnnouncment"
+          component={CreatAnnouncment}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="AllAnnouncment"
+          component={AllAnnouncment}
+          options={{headerShown: false}}
+        />
+         <Stack.Screen
+          name="CreatEvent"
+          component={CreatEvent}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="AllEvents"
+          component={AllEvents}
+          options={{headerShown: false}}
+        />
+         <Stack.Screen
+          name="UpdateSpecificAnnoncement"
+          component={UpdateSpecificAnnoncement}
+          options={{headerShown: false}}
+        />
+         <Stack.Screen
+          name="UpdateSpecificEvent"
+          component={UpdateSpecificEvent}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="GetSpecificAnnoncement"
+          component={GetSpecificAnnoncement}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="DeleteSpecificAnnoncement"
+          component={DeleteSpecificAnnoncement}
+          options={{headerShown: false}}
+        />
+          <Stack.Screen
+          name="GetSpecificEvent"
+          component={GetSpecificEvent}
+          options={{headerShown: false}}
+        />
+          <Stack.Screen
+          name="DeleteEvent"
+          component={DeleteEvent}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Services"
+          component={Services}
+          options={{headerShown: false}}
+        />
       </Stack.Navigator>
+      
     </NavigationContainer>
   );
 };

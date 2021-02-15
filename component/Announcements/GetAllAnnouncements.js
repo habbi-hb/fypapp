@@ -8,12 +8,12 @@
 
 import React from 'react';
 import {View, StatusBar, TextInput, Textarea, Text, FlatList, 
-  Image, StyleSheet, TouchableOpacity} from 'react-native';
+  Image, StyleSheet, TouchableOpacity, AsyncStorage, Alert } from 'react-native';
 import {Container, Body, Title, Button, Label, } from 'native-base';
 import {useNavigation} from '@react-navigation/native';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import axios from 'axios';
+
 const DATA = [
   {
     id: '1',
@@ -39,38 +39,14 @@ const Item = ({ item, onPress, style }) => (
 );
 
 
-const getapi = "https://react.codupcloud.com/api/announcement";
+
 
 const App = () => {
   const [selectedId, setSelectedId] = useState(null);
 
   
 
-    const [isLoading, setLoading] = useState(true);
-    const [data, setData] = useState([]);
-
-    var TOKEN =  "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvcmVhY3QuY29kdXBjbG91ZC5jb21cL2FwaVwvc2lnbnVwIiwiaWF0IjoxNjEzMDM4MjAwLCJuYmYiOjE2MTMwMzgyMDAsImp0aSI6IllqbVdPS0RuNXNnOTBpWWYiLCJzdWIiOjQsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.25W_6jQthJQG_yRy8Az0kYfQXubZsU4oN6zsM2YbNpc";
-
-  
-    //fetching our data
-  
-    useEffect(() => {
-      
-      
-      fetch(getapi, {
-        headers:{
     
-            Authorization: 'Bearer ' + TOKEN,
-      
-           
-               },
-      })
-      .then((res) => res.json())
-      .then((json) => setData(json.Data))
-      .catch((error) => alert(error))
-      .finally(setLoading(false));
-    });
-    console.log('Announcement..............:',data)
   let navigation = useNavigation();
   const renderItem = ({ item }) => {
   

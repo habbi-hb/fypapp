@@ -19,16 +19,66 @@ import {
   Header,
 } from 'native-base';
 import DateTimePicker from '@react-native-community/datetimepicker';
-import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import AsyncStorage from "@react-native-community/async-storage";
+import Server from "./Server";
 
-const App = () => {
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import { registerAnimation } from 'react-native-animatable';
+
+const App = (props) => {
+
+ 
+
   let [show, setShow] = useState(false);
   const [date, setDate] = useState(new Date(1598051730000));
+  const [password, setPassword] = useState('');
+
+  const [fName, setFname] = useState('');
+  const [lname, setlname] = useState('');
+  const [PhoneNo, setPhoneNo] = useState('');
+  const [Email, setEmail] = useState('');
+  const [Education, setEducation] = useState('');
+  const [Gender, setGender] = useState('');
+  const [Level, setLevel] = useState('');
+  const [Isadmin, setisadmin] = useState('1');
+  const [memberId, setmemberId] = useState('');
+
   const onChange = (event, selectedDate) => {
     const currentDate = selectedDate || date;
     setShow(Platform.OS === 'ios');
     setDate(currentDate);
   };
+
+  const registerUser = () => {
+    Server.post('api/signup',
+     {
+      fname: fName,
+      lname:lname ,
+      email: Email,
+      cnic: memberId,
+      phone: PhoneNo,
+      password: password,
+      education : Education,
+      level: Level,
+      isadmin: Isadmin,
+      gender : Gender,
+      dob : date
+  },{
+    headers:{
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    }
+  }).
+    then(res => {
+      AsyncStorage.setItem('Login_row',JSON.stringify(res.data)).
+      then(res => {
+        props.navigation.navigate('LoginScreen');
+        alert('Registration Success');
+      })
+    }).
+    catch(err => alert('Invalid or already exist CNIC or Email'));
+  }
+
   return (
       <Container
         style={{
@@ -73,7 +123,12 @@ const App = () => {
                   borderWidth: 1,
                 }}
                 rounded>
-                <Input placeholder="" style={{height: 40}} />
+                <Input 
+                value={fName}
+                onChangeText={(val) => setFname(val)}
+                placeholder="First Name"
+                style={{height: 40}}
+               />
                 <Icon
                   active
                   name="account"
@@ -92,7 +147,12 @@ const App = () => {
                   borderWidth: 1,
                 }}
                 rounded>
-                <Input placeholder="" style={{height: 40}} />
+                <Input 
+                value={lname}
+                onChangeText={(val) => setlname(val)}
+                placeholder="Last Name"
+                style={{height: 40}}
+               />
                 <Icon
                   active
                   name="account"
@@ -102,7 +162,7 @@ const App = () => {
               </Item>
             </View>
             <View style={styles.inputOuter}>
-              <Text style={{marginLeft: '1%', fontSize: 14}}> Member ID </Text>
+              <Text style={{marginLeft: '1%', fontSize: 14}}> CNIC </Text>
               <Item
                 style={{
                   width: '95%',
@@ -111,7 +171,13 @@ const App = () => {
                   borderWidth: 1,
                 }}
                 rounded>
-                <Input placeholder="" style={{height: 40}} />
+                <Input 
+                value={memberId}
+                onChangeText={(val) => setmemberId(val)}
+                placeholder="32601-3645123-8"
+                keyboardType='numeric'
+                style={{height: 40}}
+               />
                 <Icon
                   active
                   name="contacts"
@@ -130,7 +196,13 @@ const App = () => {
                   borderWidth: 1,
                 }}
                 rounded>
-                <Input placeholder="" style={{height: 40}} />
+                <Input 
+                value={PhoneNo}
+                onChangeText={(val) => setPhoneNo(val)}
+                placeholder="00 92 322 3445678"
+                keyboardType='numeric'
+                style={{height: 40}}
+               />
                 <Icon
                   active
                   name="phone"
@@ -149,10 +221,40 @@ const App = () => {
                   borderWidth: 1,
                 }}
                 rounded>
-                <Input placeholder="" style={{height: 40}} />
+                <Input 
+                value={Email}
+                onChangeText={(val) => setEmail(val)}
+                placeholder="youremail@host.com"
+                keyboardType='email-address'
+                style={{height: 40}}
+               />
                 <Icon
                   active
                   name="mail"
+                  type="Octicons"
+                  style={{fontSize: 18}}
+                />
+              </Item>
+            </View>
+            <View style={styles.inputOuter}>
+              <Text style={{marginLeft: '1%', fontSize: 14}}> Password </Text>
+              <Item
+                style={{
+                  width: '95%',
+                  marginLeft: '2%',
+                  borderColor: 'black',
+                  borderWidth: 1,
+                }}
+                rounded>
+                <Input 
+                value={password}
+                onChangeText={(val) => setPassword(val)}
+                placeholder="**********"
+                style={{height: 40}}
+               />
+                <Icon
+                  active
+                  name="lock"
                   type="Octicons"
                   style={{fontSize: 18}}
                 />
@@ -168,7 +270,12 @@ const App = () => {
                   borderWidth: 1,
                 }}
                 rounded>
-                <Input placeholder="" style={{height: 40}} />
+                <Input 
+                value={Education}
+                onChangeText={(val) => setEducation(val)}
+                placeholder="Your Edu"
+                style={{height: 40}}
+               />
                 <Icon
                   active
                   name="book"
@@ -187,10 +294,39 @@ const App = () => {
                   borderWidth: 1,
                 }}
                 rounded>
-                <Input placeholder="" style={{height: 40}} />
+                <Input 
+                value={Gender}
+                onChangeText={(val) => setGender(val)}
+                placeholder="Male/Female"
+                style={{height: 40}}
+               />
                 <Icon
                   active
                   name="human-male-female"
+                  type="MaterialCommunityIcons"
+                  style={{fontSize: 18}}
+                />
+              </Item>
+            </View>
+            <View style={styles.inputOuter}>
+              <Text style={{marginLeft: '1%', fontSize: 14}}> Level </Text>
+              <Item
+                style={{
+                  width: '95%',
+                  marginLeft: '2%',
+                  borderColor: 'black',
+                  borderWidth: 1,
+                }}
+                rounded>
+                <Input 
+                value={Level}
+                onChangeText={(val) => setLevel(val)}
+                placeholder="yourlevel"
+                style={{height: 40}}
+               />
+                <Icon
+                  active
+                  name="book"
                   type="MaterialCommunityIcons"
                   style={{fontSize: 18}}
                 />
@@ -230,7 +366,7 @@ const App = () => {
                 />
               </Item>
             </View>
-            <Button danger={true} style={styles.btns} rounded>
+            <Button onPress={()=> registerUser()} danger={true} style={styles.btns} rounded>
               <Text>Register</Text>
             </Button>
           </KeyboardAwareScrollView>

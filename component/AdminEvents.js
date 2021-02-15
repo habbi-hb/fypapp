@@ -26,23 +26,23 @@ const App = () => {
       }}>
       <StatusBar barStyle="dark-content" />
       <Text style={{fontSize:30}}>Admin Events</Text>
-      <TouchableOpacity 
+      <TouchableOpacity onPress={() => navigation.navigate('CreatEvent')}
       style={[styles.btns,{ backgroundColor:'#f0ee92',}]} >
           <Text style={styles.btnTxt}>Create Event</Text>
       </TouchableOpacity>
-      <TouchableOpacity 
+      <TouchableOpacity  onPress={() => navigation.navigate('GetSpecificEvent')}
       style={[styles.btns,{ backgroundColor:'#a6c1ed',}]} >
           <Text style={styles.btnTxt}>Get Specific Event with ID</Text>
       </TouchableOpacity>
-      <TouchableOpacity 
+      <TouchableOpacity onPress={() => navigation.navigate('AllEvents')}
       style={[styles.btns,{ backgroundColor:'#b8eda6',}]} >
           <Text style={styles.btnTxt}>Get All Events</Text>
       </TouchableOpacity>
-      <TouchableOpacity 
+      <TouchableOpacity  onPress={() => navigation.navigate('UpdateSpecificEvent')}
       style={[styles.btns,{ backgroundColor:'#dba6ed',}]} >
           <Text style={styles.btnTxt}>Update Specific Event</Text>
       </TouchableOpacity>
-      <TouchableOpacity 
+      <TouchableOpacity onPress={() => navigation.navigate('DeleteEvent')}
       style={[styles.btns,{ backgroundColor:'#edb4a6',}]} >
           <Text style={styles.btnTxt}>Delete Specific Event</Text>
       </TouchableOpacity>

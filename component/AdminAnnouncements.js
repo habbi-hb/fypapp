@@ -25,23 +25,25 @@ const App = () => {
     }}>
     <StatusBar barStyle="dark-content" />
     <Text style={{fontSize:30}}>Admin Announcements </Text>
-    <TouchableOpacity 
+    
+    <TouchableOpacity onPress={() => navigation.navigate('CreatAnnouncment')}
     style={[styles.btns,{ backgroundColor:'#f0ee92',}]} >
         <Text style={styles.btnTxt}>Create Announcement</Text>
     </TouchableOpacity>
-    <TouchableOpacity 
+    <TouchableOpacity  onPress={() => navigation.navigate('UpdateSpecificAnnoncement')}
     style={[styles.btns,{ backgroundColor:'#a6c1ed',}]} >
         <Text style={styles.btnTxt}>Update Specific Announcement</Text>
     </TouchableOpacity>
-    <TouchableOpacity 
+    <TouchableOpacity onPress={() => navigation.navigate('GetSpecificAnnoncement')}
     style={[styles.btns,{ backgroundColor:'#b8eda6',}]} >
         <Text style={styles.btnTxt}>Get Specific Announcement</Text>
     </TouchableOpacity>
-    <TouchableOpacity 
+      <TouchableOpacity onPress={() => navigation.navigate('AllAnnouncment')}
+ 
     style={[styles.btns,{ backgroundColor:'#dba6ed',}]} >
         <Text style={styles.btnTxt}> Get All Announcements</Text>
     </TouchableOpacity>
-    <TouchableOpacity 
+    <TouchableOpacity  onPress={() => navigation.navigate('DeleteSpecificAnnoncement')}
     style={[styles.btns,{ backgroundColor:'#edb4a6',}]} >
         <Text style={styles.btnTxt}>Delete Specific Announcement</Text>
     </TouchableOpacity>

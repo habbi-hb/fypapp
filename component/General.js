@@ -42,7 +42,7 @@ const App = () => {
           <Button
             style={styles.btns}
             rounded
-            onPressIn={() => navigation.navigate('Announcements')}>
+            onPressIn={() => navigation.navigate('LoginScreen')}>
             <Text style={styles.btnTxt}>Announcement and Events</Text>
           </Button>
           <Button

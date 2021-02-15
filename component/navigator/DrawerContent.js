@@ -81,15 +81,30 @@ export default function DrawerContent(props) {
            
             <DrawerItem
               icon={({color, size}) => (
-                <Icon name="exit-to-app" color={color} size={size} />
+                <Icon name="room-service-outline" color={color} size={size} />
               )}
               label="Services"
+              onPress={() => {
+                props.navigation.navigate('Services');
+              }}
             />
             <DrawerItem
               icon={({color, size}) => (
-                <Icon name="exit-to-app" color={color} size={size} />
+                <Icon name="call-split" color={color} size={size} />
               )}
               label="Announcement"
+              onPress={() => {
+                props.navigation.navigate('Announcement');
+              }}
+            />
+              <DrawerItem
+              icon={({color, size}) => (
+                <Icon name="calendar-check" color={color} size={size} />
+              )}
+              label="Events"
+              onPress={() => {
+                props.navigation.navigate('Events');
+              }}
             />
             <DrawerItem
               icon={({color, size}) => (
