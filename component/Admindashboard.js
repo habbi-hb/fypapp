@@ -175,6 +175,69 @@ const App = () => {
             </TouchableOpacity>
          
         </View>
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'center',
+            marginTop: '3%',
+            
+            justifyContent:'space-evenly'
+          }}>
+            <TouchableOpacity style={{padding: 10, backgroundColor:'white', alignItems:'center',
+            shadowColor: "#000",
+            width: 150,
+            shadowOffset: {
+              width: 0,
+              height: 2,
+            },
+            shadowOpacity: 0.25,
+            shadowRadius: 3.84,
+            
+            elevation: 5,
+            }}
+    
+          >
+            <View style={{height: 100, flex: 1, justifyContent: 'center'}}>
+              <Image
+                  source={require('./assets/bbb.png')}
+                  style={{height: 50, width: 50}}
+                />
+            </View>
+            <View style={{justifyContent: 'center'}}>
+              <Text style={styles.text}>Budgets</Text>
+            </View>
+
+
+            </TouchableOpacity>
+            <TouchableOpacity style={{ padding: 10, width: 150, backgroundColor:'white', alignItems:'center',
+            shadowColor: "#000",
+            shadowOffset: {
+              width: 0,
+              height: 2,
+            },
+            shadowOpacity: 0.25,
+            shadowRadius: 3.84,
+            
+            elevation: 5,}}
+        
+          >
+            <View style={{height: 100, flex: 1, justifyContent: 'center'}}>
+              <Image
+                  source={require('./assets/ssss.png')}
+                  style={{height: 50, width: 50}}
+                />
+            </View>
+            <View style={{justifyContent: 'center'}}>
+              <Text style={styles.text}>Services</Text>
+            </View>
+
+
+            </TouchableOpacity>
+         
+        </View>
+        
+        
+        
       
     
       </ScrollView>

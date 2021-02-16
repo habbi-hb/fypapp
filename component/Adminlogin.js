@@ -28,9 +28,36 @@ import {
 } from 'native-base';
 import {useNavigation} from '@react-navigation/native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import Server from "./Server";
+import AsyncStorage from "@react-native-community/async-storage";
 
 const App = () => {
-    let navigation = useNavigation();
+  let navigation = useNavigation();
+
+    const [email, setEmail] = React.useState('');
+    const [memberId, setMemberId] = React.useState('');
+    const [password, setPassword] = React.useState('');
+
+    const LogIn = () => {
+      // navigation.navigate('Nav');
+      // console.log(email,memberId,password)
+      Server.post('api/login',{
+        email: email,
+        cnic: memberId,
+        password: password
+    }).
+      then(res => {
+        // console.log(res.data)
+        AsyncStorage.setItem('Login_row',JSON.stringify(res.data)).
+        then(res => {
+          navigation.navigate('AdminDashboard');
+          alert('Login Success');
+        })
+      }).
+      catch(err => alert('Invalid CNIC, Email or Password'));
+    }
+
+
   return (
     <Container
       style={{
@@ -67,7 +94,7 @@ const App = () => {
       <Form style={styles.form}>
         <KeyboardAwareScrollView>
           <View style={styles.inputOuter}>
-            <Text style={{marginLeft: '1%', fontSize: 14}}> Member ID </Text>
+            <Text style={{marginLeft: '1%', fontSize: 14}}> CNIC </Text>
             <Item
               style={{
                 width: '95%',
@@ -77,7 +104,12 @@ const App = () => {
                 borderWidth: 1,
               }}
               rounded>
-              <Input placeholder="" />
+              <Input 
+               value={memberId}
+               onChangeText={(val) => setMemberId(val)}
+               placeholder="32103-4456789-0"
+               keyboardType='numeric'
+              />
               <Icon active name="contacts" type="AntDesign" />
             </Item>
           </View>
@@ -95,8 +127,34 @@ const App = () => {
                 borderWidth: 1,
               }}
               rounded>
-              <Input placeholder="" />
+              <Input 
+              value={email}
+              onChangeText={(val) => setEmail(val)}
+              placeholder="youremail@host.com"
+               />
               <Icon active name="mail" type="Octicons" />
+            </Item>
+          </View>
+          <View style={styles.inputOuter}>
+            <Text style={{marginLeft: '1%', marginTop: '2%', fontSize: 14}}>
+              {' '}
+              Password{' '}
+            </Text>
+            <Item
+              style={{
+                width: '95%',
+                marginLeft: '2%',
+                borderColor: 'black',
+                borderWidth: 1,
+              }}
+              rounded>
+              <Input 
+                value={password}
+                onChangeText={(val) => setPassword(val)}
+                placeholder="yourpassword"
+                secureTextEntry={true}
+               />
+              <Icon active name="lock" type="Octicons" />
             </Item>
           </View>
 
@@ -109,15 +167,6 @@ const App = () => {
                 justifyContent: 'space-between',
               },
             ]}>
-            <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}>
-              <CheckBox checked={false} style={{height: 15, width: 15}} />
-              <Text style={{fontSize: 16, marginLeft: '10%'}}>Remember Me</Text>
-            </View>
             <View style={{flexDirection: 'row'}}>
               <Text style={{fontSize: 16, marginLeft: '4%'}}>
                 Forgot Password?
@@ -132,7 +181,9 @@ const App = () => {
         style={styles.btns}
         rounded
         active={true}
-        onPressIn={() => navigation.navigate('Nav1')}>
+        onPressIn={() => LogIn()}
+        // onPressIn={() => navigation.navigate('Nav')}
+        >
         <Text style={styles.btnTxt}>login</Text>
       </Button>
     </Container>
