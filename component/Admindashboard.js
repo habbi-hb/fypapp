@@ -219,7 +219,7 @@ const App = () => {
             shadowRadius: 3.84,
             
             elevation: 5,}}
-        
+            onPress={() => navigation.navigate('AdminServices')}
           >
             <View style={{height: 100, flex: 1, justifyContent: 'center'}}>
               <Image
@@ -230,10 +230,46 @@ const App = () => {
             <View style={{justifyContent: 'center'}}>
               <Text style={styles.text}>Services</Text>
             </View>
-
+            
 
             </TouchableOpacity>
          
+        </View>
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'center',
+            marginTop: '3%',
+            
+            justifyContent:'space-evenly'
+          }}>
+            <TouchableOpacity style={{padding: 10, backgroundColor:'white', alignItems:'center',
+            shadowColor: "#000",
+            width: 150,
+            shadowOffset: {
+              width: 0,
+              height: 2,
+            },
+            shadowOpacity: 0.25,
+            shadowRadius: 3.84,
+            
+            elevation: 5,
+            }}
+            onPress={() => navigation.navigate('getalluser')}
+          >
+            <View style={{height: 100, flex: 1, justifyContent: 'center'}}>
+              <Image
+                  source={require('./assets/allusers.png')}
+                  style={{height: 60, width: 50}}
+                />
+            </View>
+            <View style={{justifyContent: 'center'}}>
+              <Text style={styles.text}>All User</Text>
+            </View>
+
+
+            </TouchableOpacity>
+            
         </View>
         
         

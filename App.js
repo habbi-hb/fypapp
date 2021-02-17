@@ -31,17 +31,31 @@ import OurServices from './component/OurServices';
 import Settings from './component/Settings';
 import Update_Profile from './component/Update_Profile';
 import Nav from './component/navigator/DrawerNavigator';
+import AdNav from './component/Adminnavigator/AdDrawerNavigator';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import RouteNav1 from './component/Adminnavigator/AdDrawerNavigator';
 import AdminAnnouncements from './component/AdminAnnouncement';
 import AdminEvents from './component/AdminEvents';
+
 import AdminDashboard from './component/Admindashboard'
+
+import Education from './component/Services/Education';
+import HouseHelp from './component/Services/Househelp';
+import Medical from './component/Services/Medical';
+import MarriageHelp from './component/Services/Marriagehelp';
+import Arbitration from './component/Services/Arbitration';
+import GraveYard from './component/Services/GraveYard';
+import Employement from './component/Services/Employment';
+import YouthandIT from './component/Services/YouthandIT';
 
 
 import Services from './component/Services';
-
+import AdminServices from './component/AdminServices';
+import getalluser from "./component/Allusers";
+ 
 import Events from './component/Events'
+import { floor } from 'react-native-reanimated';
 
 const Stack = createStackNavigator();
 
@@ -87,6 +101,11 @@ const MainApp = () => {
         <Stack.Screen
           name="Nav"
           component={Nav}
+          options={{headerShown: false}}
+        />
+           <Stack.Screen
+          name="Adnav"
+          component={AdNav}
           options={{headerShown: false}}
         />
           <Stack.Screen
@@ -146,8 +165,58 @@ const MainApp = () => {
         options={{headerShown: false}}
         />
         <Stack.Screen
+        name="getalluser"
+        component={getalluser}
+        options={{headerShown:false}}
+        />
+        <Stack.Screen
         name="AdminEvents"
         component={AdminEvents}
+        options={{headerShown: false}}
+        />
+        <Stack.Screen
+        name="AdminServices"
+        component={AdminServices}
+        options={{headerShown: false}}
+        />
+         <Stack.Screen
+        name="Education"
+        component={Education}
+        options={{headerShown: false}}
+        />
+          <Stack.Screen
+        name="househelp"
+        component={HouseHelp}
+        options={{headerShown: false}}
+        />
+         <Stack.Screen
+        name="Medical"
+        component={Medical}
+        options={{headerShown: false}}
+        />
+         <Stack.Screen
+        name="Marriagehelp"
+        component={MarriageHelp}
+        options={{headerShown: false}}
+        />
+         <Stack.Screen
+        name="Arbitration"
+        component={Arbitration}
+        options={{headerShown: false}}
+        />
+         <Stack.Screen
+        name="GraveYard"
+        component={GraveYard}
+        options={{headerShown: false}}
+        />
+         <Stack.Screen
+        name="Employement"
+        component={Employement}
+        options={{headerShown: false}}
+        />
+         <Stack.Screen
+        name="YouthandIT"
+        component={YouthandIT}
         options={{headerShown: false}}
         />
       </Stack.Navigator>

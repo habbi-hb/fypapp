@@ -20,6 +20,8 @@ import {TouchableOpacity, FlatList, StyleSheet, Modal} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import AsyncStorage from "@react-native-community/async-storage";
 import Server from "./Server";
+
+
 import Loader from "./Loader";
 
 const OurServices = () => {
@@ -162,11 +164,7 @@ const OurServices = () => {
         <Body>
           <Text>Our Services</Text>
         </Body>
-        <Right>
-          <TouchableOpacity onPress={() => setModal(true)}>
-            <Icon active name="plus" type="AntDesign" />
-          </TouchableOpacity>
-        </Right>
+      
       </Header>
       <Loader loading={loader} />
         <FlatList
@@ -181,118 +179,13 @@ const OurServices = () => {
                       <Text style={styles.date}> {item.note}</Text>
                     </View>
                     
-                    <View style={{width:'10%',alignItems:'flex-end',alignSelf:'center'}}>
-                      {/* <Icon onPress={()=>{setModalDel(true);setIdDel(item.id)}} style={{marginBottom:15,color:'red'}} active name="delete" type="AntDesign" /> */}
-                      <Icon onPress={()=>{setModalDel(true);setIdDel(item.id);setService(item.services)}} style={{color:'green'}} active name="edit" type="AntDesign" />
-                    </View>
+                    
                 </View>
             }
             keyExtractor={(item) => item.id.toString()}
           />
-          <Modal
-              animationType={'fade'}
-              transparent={true}
-              visible={modal}
-              onRequestClose={() => setModal(false)}
-              on
-              >
-              <View style={styles.modalBody}>
-                <View style={styles.modalContainer}>
-                  <View style={{width:'100%',marginVertical:10}}>
-                    <View style={{flexDirection:'row',alignSelf:'center'}}>
-                      <Text style={{fontSize:14,fontWeight:'bold',color:'#187ce6',}}>Add Services</Text>
-                    </View> 
-                    <View style={{flexDirection: 'row', alignItems: 'center',margin:10}}>
-                      <View style={{flex: 1, height: 1, backgroundColor: 'lightgray'}} />
-                    </View>
-                    <View style={styles.inputOuter}>
-                      <Text style={{marginLeft: '1%', marginTop: '2%', fontSize: 14}}>
-                        {' '}
-                        Service{' '}
-                      </Text>
-                      <Item
-                        style={{
-                          width: '95%',
-                          marginLeft: '2%',
-                          borderColor: 'black',
-                          borderWidth: 1,
-                          marginBottom:10
-                        }}
-                        rounded>
-                        <Input 
-                        style={{height:40}}
-                          value={service}
-                          onChangeText={(val) => setService(val)}
-                          placeholder=""
-                        />
-                      </Item>
-                    </View>
-                    <Button
-                      danger={true}
-                      style={styles.btns}
-                      rounded
-                      active={true}
-                      onPressIn={() => addService()}
-                      >
-                      <Text style={styles.btnTxt}>Add</Text>
-                    </Button>
-                  </View> 
-                  
-                </View>
-              </View>
-            </Modal>
-            <Modal
-              animationType={'fade'}
-              transparent={true}
-              visible={modalDel}
-              onRequestClose={() => setModalDel(false)}
-              on
-              >
-              <View style={styles.modalBody}>
-                <View style={styles.modalContainer}>
-                  <View style={{width:'100%'}}>
-                  <View style={{flexDirection:'row',alignSelf:'center',marginVertical:10}}>
-                      <Text style={{fontSize:14,fontWeight:'bold',color:'#187ce6',}}>Update Services</Text>
-                    </View>
-                    <View style={{flexDirection: 'row', alignItems: 'center',marginBottom:10}}>
-                      <View style={{flex: 1, height: 1, backgroundColor: 'lightgray'}} />
-                    </View>
-                  <View style={styles.inputOuter}>
-                      <Text style={{marginLeft: '1%', marginTop: '2%', fontSize: 14}}>
-                        {' '}
-                        Service{' '}
-                      </Text>
-                      <Item
-                        style={{
-                          width: '95%',
-                          marginLeft: '2%',
-                          borderColor: 'black',
-                          borderWidth: 1,
-                          marginBottom:10
-                        }}
-                        rounded>
-                        <Input 
-                        style={{height:40}}
-                          value={service}
-                          onChangeText={(val) => setService(val)}
-                          placeholder=""
-                        />
-                      </Item>
-                    </View>
-                    <Button
-                      danger={true}
-                      style={[styles.btns]}
-                      rounded
-                      active={true}
-                      onPressIn={() => updateService()}
-                      >
-                      <Text style={styles.btnTxt}>Update</Text>
-                    </Button>
-                  </View> 
-                  
-                </View>
-              </View>
-            </Modal>
+        
+           
     
     </Container>    
   );
@@ -300,11 +193,17 @@ const OurServices = () => {
 
 const styles = StyleSheet.create({
     container: {
-        borderBottomWidth:1,
-        borderBottomColor:'#ddd',
+      alignItems:'center',
+      alignSelf:'center',
+      borderRadius : 1,
+      width: '90%',
+      borderStyle: 'dashed',
+      borderWidth: 1,
+      borderColor: 'rgba(161,155,183,1)',
+        margin:10,
         paddingHorizontal:10,
         paddingVertical:10,
-        flexDirection:'row',
+        flexDirection:'row'
     },
     title: {
         fontSize:16,

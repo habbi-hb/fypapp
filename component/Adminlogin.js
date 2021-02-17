@@ -50,7 +50,7 @@ const App = () => {
         // console.log(res.data)
         AsyncStorage.setItem('Login_row',JSON.stringify(res.data)).
         then(res => {
-          navigation.navigate('AdminDashboard');
+          navigation.navigate('Adnav');
           alert('Login Success');
         })
       }).

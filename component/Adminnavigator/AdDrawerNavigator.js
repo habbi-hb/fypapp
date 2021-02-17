@@ -11,9 +11,7 @@ export default function RouteNav1() {
   return (
     <Drawer.Navigator initialRouteName="Admindashboard" drawerPosition="right" 
      drawerContent={(props) => <AdDrawerContent {...props}  />}>
-      <Drawer.Screen
-        name="Admindashboard"
-        component={Admindashboard}
+      <Drawer.Screen name="Admindashboard"component={Admindashboard}
         options={{
           // drawerIcon: ({focused, color, size}) => (
           //   <Image

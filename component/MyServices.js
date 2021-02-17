@@ -114,105 +114,247 @@ const App = () => {
         />
       </View>
       <ScrollView>
-        <View
+      <View
           style={{
             flexDirection: 'row',
             justifyContent: 'center',
             marginTop: '3%',
+            
+            justifyContent:'space-evenly'
           }}>
-          <Card style={{width: '40%'}}>
-            <CardItem
-              cardBody
-              style={{height: 100, flex: 1, justifyContent: 'center'}}>
+            <TouchableOpacity style={{padding: 10, backgroundColor:'white', alignItems:'center',
+            shadowColor: "#000",
+            width: 150,
+            shadowOffset: {
+              width: 0,
+              height: 2,
+            },
+            shadowOpacity: 0.25,
+            shadowRadius: 3.84,
+            
+            elevation: 5,
+            }}
+            onPress={() => navigation.navigate('Education')}
+          >
+            <View style={{height: 100, flex: 1, justifyContent: 'center'}}>
               <Image
-                source={require('./assets/3.png')}
-                style={{height: 50, width: 30}}
-              />
-            </CardItem>
-            <CardItem style={{justifyContent: 'center'}}>
-              <Text style={styles.text}>Performance</Text>
-            </CardItem>
-          </Card>
-          <Card style={{width: '40%', marginLeft: '3%'}}>
-            <CardItem
-              cardBody
-              style={{height: 100, flex: 1, justifyContent: 'center'}}>
+                  source={require('./assets/edu.png')}
+                  style={{height: 50, width: 65}}
+                />
+            </View>
+            <View style={{justifyContent: 'center'}}>
+              <Text style={styles.text}>Education</Text>
+            </View>
+
+
+            </TouchableOpacity>
+            <TouchableOpacity style={{ padding: 10, width: 150, backgroundColor:'white', alignItems:'center',
+            shadowColor: "#000",
+            shadowOffset: {
+              width: 0,
+              height: 2,
+            },
+            shadowOpacity: 0.25,
+            shadowRadius: 3.84,
+            
+            elevation: 5,}}
+            onPress={() => navigation.navigate('househelp')}
+          >
+            <View style={{height: 100, flex: 1, justifyContent: 'center'}}>
               <Image
-                source={require('./assets/4.png')}
-                style={{height: 40, width: 40}}
-              />
-            </CardItem>
-            <CardItem style={{justifyContent: 'center'}}>
-              <Text style={styles.text}>Leave</Text>
-            </CardItem>
-          </Card>
+                  source={require('./assets/house.png')}
+                  style={{height: 50, width: 50}}
+                />
+            </View>
+            <View style={{justifyContent: 'center'}}>
+              <Text style={styles.text}>House Help</Text>
+            </View>
+
+
+            </TouchableOpacity>
+         
         </View>
         <View
           style={{
             flexDirection: 'row',
             justifyContent: 'center',
             marginTop: '3%',
+            
+            justifyContent:'space-evenly'
           }}>
-          <Card style={{width: '40%'}}>
-            <CardItem
-              cardBody
-              style={{height: 100, flex: 1, justifyContent: 'center'}}>
+            <TouchableOpacity style={{padding: 10, backgroundColor:'white', alignItems:'center',
+            shadowColor: "#000",
+            width: 150,
+            shadowOffset: {
+              width: 0,
+              height: 2,
+            },
+            shadowOpacity: 0.25,
+            shadowRadius: 3.84,
+            
+            elevation: 5,
+            }}
+            onPress={() => navigation.navigate('Medical')}
+          >
+            <View style={{height: 100, flex: 1, justifyContent: 'center'}}>
               <Image
-                source={require('./assets/7.png')}
-                style={{height: 40, width: 40}}
-              />
-            </CardItem>
-            <CardItem style={{justifyContent: 'center'}}>
-              <Text style={styles.text}>Organization</Text>
-            </CardItem>
-          </Card>
-          <Card style={{width: '40%', marginLeft: '3%'}}>
-            <CardItem
-              cardBody
-              style={{height: 100, flex: 1, justifyContent: 'center'}}>
+                  source={require('./assets/medical.png')}
+                  style={{height: 60, width: 50}}
+                />
+            </View>
+            <View style={{justifyContent: 'center'}}>
+              <Text style={styles.text}>Medical</Text>
+            </View>
+
+
+            </TouchableOpacity>
+            <TouchableOpacity style={{ padding: 10, width: 150, backgroundColor:'white', alignItems:'center',
+            shadowColor: "#000",
+            shadowOffset: {
+              width: 0,
+              height: 2,
+            },
+            shadowOpacity: 0.25,
+            shadowRadius: 3.84,
+            
+            elevation: 5,}}
+            onPress={() => navigation.navigate('Marriagehelp')}
+          >
+            <View style={{height: 100, flex: 1, justifyContent: 'center'}}>
               <Image
-                source={require('./assets/5.png')}
-                style={{height: 40, width: 40}}
-              />
-            </CardItem>
-            <CardItem style={{justifyContent: 'center'}}>
-              <Text style={styles.text}>timesheet</Text>
-            </CardItem>
-          </Card>
+                  source={require('./assets/mirage.png')}
+                  style={{height: 50, width: 50}}
+                />
+            </View>
+            <View style={{justifyContent: 'center'}}>
+              <Text style={styles.text}>Marriage Help</Text>
+            </View>
+
+
+            </TouchableOpacity>
+         
         </View>
         <View
           style={{
             flexDirection: 'row',
             justifyContent: 'center',
             marginTop: '3%',
+            
+            justifyContent:'space-evenly'
           }}>
-          <Card style={{width: '40%'}}>
-            <CardItem
-              cardBody
-              style={{height: 100, flex: 1, justifyContent: 'center'}}>
+            <TouchableOpacity style={{padding: 10, backgroundColor:'white', alignItems:'center',
+            shadowColor: "#000",
+            width: 150,
+            shadowOffset: {
+              width: 0,
+              height: 2,
+            },
+            shadowOpacity: 0.25,
+            shadowRadius: 3.84,
+            
+            elevation: 5,
+            }}
+            onPress={() => navigation.navigate('Arbitration')}
+          >
+            <View style={{height: 100, flex: 1, justifyContent: 'center'}}>
               <Image
-                source={require('./assets/8.png')}
-                style={{height: 40, width: 40}}
-              />
-            </CardItem>
-            <CardItem style={{justifyContent: 'center'}}>
-              <Text style={styles.text}>attendance</Text>
-            </CardItem>
-          </Card>
-          <Card style={{width: '40%', marginLeft: '3%'}}>
-            <CardItem
-              cardBody
-              style={{height: 100, flex: 1, justifyContent: 'center'}}>
+                  source={require('./assets/Arbitration.png')}
+                  style={{height: 50, width: 50}}
+                />
+            </View>
+            <View style={{justifyContent: 'center'}}>
+              <Text style={styles.text}>Arbitration</Text>
+            </View>
+
+
+            </TouchableOpacity>
+            <TouchableOpacity style={{ padding: 10, width: 150, backgroundColor:'white', alignItems:'center',
+            shadowColor: "#000",
+            shadowOffset: {
+              width: 0,
+              height: 2,
+            },
+            shadowOpacity: 0.25,
+            shadowRadius: 3.84,
+            
+            elevation: 5,}}
+            onPress={() => navigation.navigate('GraveYard')}
+          >
+            <View style={{height: 100, flex: 1, justifyContent: 'center'}}>
               <Image
-                source={require('./assets/6.png')}
-                style={{height: 40, width: 40}}
-              />
-            </CardItem>
-            <CardItem style={{justifyContent: 'center'}}>
-              <Text style={styles.text}>files</Text>
-            </CardItem>
-          </Card>
+                  source={require('./assets/GraveYard.png')}
+                  style={{height: 50, width: 50}}
+                />
+            </View>
+            <View style={{justifyContent: 'center'}}>
+              <Text style={styles.text}>GraveYard</Text>
+            </View>
+
+
+            </TouchableOpacity>
+         
         </View>
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'center',
+            marginTop: '3%',
+            
+            justifyContent:'space-evenly'
+          }}>
+            <TouchableOpacity style={{padding: 10, backgroundColor:'white', alignItems:'center',
+            shadowColor: "#000",
+            width: 150,
+            shadowOffset: {
+              width: 0,
+              height: 2,
+            },
+            shadowOpacity: 0.25,
+            shadowRadius: 3.84,
+            
+            elevation: 5,
+            }}
+            onPress={() => navigation.navigate('Employement')}
+          >
+            <View style={{height: 100, flex: 1, justifyContent: 'center'}}>
+              <Image
+                  source={require('./assets/Employment.png')}
+                  style={{height: 50, width: 50}}
+                />
+            </View>
+            <View style={{justifyContent: 'center'}}>
+              <Text style={styles.text}>Employment</Text>
+            </View>
+
+
+            </TouchableOpacity>
+            <TouchableOpacity style={{ padding: 10, width: 150, backgroundColor:'white', alignItems:'center',
+            shadowColor: "#000",
+            shadowOffset: {
+              width: 0,
+              height: 2,
+            },
+            shadowOpacity: 0.25,
+            shadowRadius: 3.84,
+            
+            elevation: 5,}}
+            onPress={() => navigation.navigate('YouthandIT')}
+          >
+            <View style={{height: 100, flex: 1, justifyContent: 'center'}}>
+              <Image
+                  source={require('./assets/Youth.png')}
+                  style={{height: 50, width: 50}}
+                />
+            </View>
+            <View style={{justifyContent: 'center'}}>
+              <Text style={styles.text}>Youth and IT</Text>
+            </View>
+
+
+            </TouchableOpacity>
+         
+        </View>
+
       </ScrollView>
     </Container>
   );

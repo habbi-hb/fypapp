@@ -1335,7 +1335,9 @@ drawable component_assets_7
 drawable component_assets_8
 drawable component_assets_9
 drawable component_assets_announcements
+drawable component_assets_bbb
 drawable component_assets_event
+drawable component_assets_ssss
 drawable design_bottom_navigation_item_background
 drawable design_fab_background
 drawable design_ic_visibility
