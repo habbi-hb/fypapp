@@ -195,7 +195,7 @@ const App = () => {
             
             elevation: 5,
             }}
-    
+            onPress={() => navigation.navigate('AdminBudget')}
           >
             <View style={{height: 100, flex: 1, justifyContent: 'center'}}>
               <Image

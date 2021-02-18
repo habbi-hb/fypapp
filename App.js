@@ -37,7 +37,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import RouteNav1 from './component/Adminnavigator/AdDrawerNavigator';
 import AdminAnnouncements from './component/AdminAnnouncement';
 import AdminEvents from './component/AdminEvents';
-
+import AdminBudget from './component/Budget';
 import AdminDashboard from './component/Admindashboard'
 
 import Education from './component/Services/Education';
@@ -172,6 +172,11 @@ const MainApp = () => {
         <Stack.Screen
         name="AdminEvents"
         component={AdminEvents}
+        options={{headerShown: false}}
+        />
+         <Stack.Screen
+        name="AdminBudget"
+        component={AdminBudget}
         options={{headerShown: false}}
         />
         <Stack.Screen

@@ -440,7 +440,7 @@ const ListAvatarExample = () => {
                 <View style={styles.modalContainerDel}>
                   <View style={{width:'100%'}}>
                   <View style={{flexDirection:'row',alignSelf:'center',marginVertical:10}}>
-                      <Text style={{fontSize:14,fontWeight:'bold',color:'#187ce6',}}>Delete Eve ?</Text>
+                      <Text style={{fontSize:14,fontWeight:'bold',color:'#187ce6',}}>Delete Event ?</Text>
                     </View>
                     <View style={{flexDirection: 'row', alignItems: 'center',marginBottom:10}}>
                       <View style={{flex: 1, height: 1, backgroundColor: 'lightgray'}} />

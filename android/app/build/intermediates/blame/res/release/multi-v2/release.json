@@ -129,6 +129,21 @@
             ]
         },
         {
+            "outputFile": "C:\\Users\\habbi\\Desktop\\prok\\hr\\android\\app\\build\\intermediates\\res\\merged\\release\\values-h480dp-land-v13_values-h480dp-land-v13.arsc.flat",
+            "map": [
+                {
+                    "source": "C:\\Users\\habbi\\.gradle\\caches\\transforms-2\\files-2.1\\863e0c3c6716935cd3657ad638fd992d\\material-1.1.0\\res\\values-h480dp-land-v13\\values-h480dp-land-v13.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10",
+                        "startColumns": "4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,114,170,226,293,358,413,478,547",
+                        "endColumns": "58,55,55,66,64,54,64,68,68",
+                        "endOffsets": "109,165,221,288,353,408,473,542,611"
+                    }
+                }
+            ]
+        },
+        {
             "outputFile": "C:\\Users\\habbi\\Desktop\\prok\\hr\\android\\app\\build\\intermediates\\res\\merged\\release\\values-zh-rCN_values-zh-rCN.arsc.flat",
             "map": [
                 {
@@ -156,21 +171,6 @@
                         "startOffsets": "105,200,295,395,477,574,680,757,833,924,1016,1113,1209,1304,1397,1492,1584,1675,1766,1843,1939,2034,2129,2226,2322,2420,2568,2662",
                         "endColumns": "94,94,99,81,96,105,76,75,90,91,96,95,94,92,94,91,90,90,76,95,94,94,96,95,97,147,93,77",
                         "endOffsets": "195,290,390,472,569,675,752,828,919,1011,1108,1204,1299,1392,1487,1579,1670,1761,1838,1934,2029,2124,2221,2317,2415,2563,2657,2735"
-                    }
-                }
-            ]
-        },
-        {
-            "outputFile": "C:\\Users\\habbi\\Desktop\\prok\\hr\\android\\app\\build\\intermediates\\res\\merged\\release\\values-h480dp-land-v13_values-h480dp-land-v13.arsc.flat",
-            "map": [
-                {
-                    "source": "C:\\Users\\habbi\\.gradle\\caches\\transforms-2\\files-2.1\\863e0c3c6716935cd3657ad638fd992d\\material-1.1.0\\res\\values-h480dp-land-v13\\values-h480dp-land-v13.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10",
-                        "startColumns": "4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,114,170,226,293,358,413,478,547",
-                        "endColumns": "58,55,55,66,64,54,64,68,68",
-                        "endOffsets": "109,165,221,288,353,408,473,542,611"
                     }
                 }
             ]
@@ -1070,21 +1070,6 @@
             ]
         },
         {
-            "outputFile": "C:\\Users\\habbi\\Desktop\\prok\\hr\\android\\app\\build\\intermediates\\res\\merged\\release\\values-xlarge-v4_values-xlarge-v4.arsc.flat",
-            "map": [
-                {
-                    "source": "C:\\Users\\habbi\\.gradle\\caches\\transforms-2\\files-2.1\\1cb9b9ea592aa2ea85233be252327dcf\\appcompat-1.1.0\\res\\values-xlarge-v4\\values-xlarge-v4.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7",
-                        "startColumns": "4,4,4,4,4,4",
-                        "startOffsets": "55,126,197,267,337,405",
-                        "endColumns": "70,70,69,69,67,67",
-                        "endOffsets": "121,192,262,332,400,468"
-                    }
-                }
-            ]
-        },
-        {
             "outputFile": "C:\\Users\\habbi\\Desktop\\prok\\hr\\android\\app\\build\\intermediates\\res\\merged\\release\\values-ar_values-ar.arsc.flat",
             "map": [
                 {
@@ -1112,6 +1097,21 @@
                         "startOffsets": "2839",
                         "endColumns": "100",
                         "endOffsets": "2935"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "C:\\Users\\habbi\\Desktop\\prok\\hr\\android\\app\\build\\intermediates\\res\\merged\\release\\values-xlarge-v4_values-xlarge-v4.arsc.flat",
+            "map": [
+                {
+                    "source": "C:\\Users\\habbi\\.gradle\\caches\\transforms-2\\files-2.1\\1cb9b9ea592aa2ea85233be252327dcf\\appcompat-1.1.0\\res\\values-xlarge-v4\\values-xlarge-v4.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "55,126,197,267,337,405",
+                        "endColumns": "70,70,69,69,67,67",
+                        "endOffsets": "121,192,262,332,400,468"
                     }
                 }
             ]
@@ -1356,6 +1356,22 @@
             ]
         },
         {
+            "outputFile": "C:\\Users\\habbi\\Desktop\\prok\\hr\\android\\app\\build\\intermediates\\res\\merged\\release\\values-v26_values-v26.arsc.flat",
+            "map": [
+                {
+                    "source": "C:\\Users\\habbi\\.gradle\\caches\\transforms-2\\files-2.1\\1cb9b9ea592aa2ea85233be252327dcf\\appcompat-1.1.0\\res\\values-v26\\values-v26.xml",
+                    "from": {
+                        "startLines": "2,3,4,8,12,16",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "55,130,217,431,657,896",
+                        "endLines": "2,3,7,11,15,16",
+                        "endColumns": "74,86,12,12,12,92",
+                        "endOffsets": "125,212,426,652,891,984"
+                    }
+                }
+            ]
+        },
+        {
             "outputFile": "C:\\Users\\habbi\\Desktop\\prok\\hr\\android\\app\\build\\intermediates\\res\\merged\\release\\values-sq_values-sq.arsc.flat",
             "map": [
                 {
@@ -1383,22 +1399,6 @@
                         "startOffsets": "105,219,319,431,517,623,746,828,907,998,1090,1185,1279,1381,1474,1569,1666,1757,1850,1930,2036,2140,2238,2344,2448,2550,2704,2801",
                         "endColumns": "113,99,111,85,105,122,81,78,90,91,94,93,101,92,94,96,90,92,79,105,103,97,105,103,101,153,96,80",
                         "endOffsets": "214,314,426,512,618,741,823,902,993,1085,1180,1274,1376,1469,1564,1661,1752,1845,1925,2031,2135,2233,2339,2443,2545,2699,2796,2877"
-                    }
-                }
-            ]
-        },
-        {
-            "outputFile": "C:\\Users\\habbi\\Desktop\\prok\\hr\\android\\app\\build\\intermediates\\res\\merged\\release\\values-v26_values-v26.arsc.flat",
-            "map": [
-                {
-                    "source": "C:\\Users\\habbi\\.gradle\\caches\\transforms-2\\files-2.1\\1cb9b9ea592aa2ea85233be252327dcf\\appcompat-1.1.0\\res\\values-v26\\values-v26.xml",
-                    "from": {
-                        "startLines": "2,3,4,8,12,16",
-                        "startColumns": "4,4,4,4,4,4",
-                        "startOffsets": "55,130,217,431,657,896",
-                        "endLines": "2,3,7,11,15,16",
-                        "endColumns": "74,86,12,12,12,92",
-                        "endOffsets": "125,212,426,652,891,984"
                     }
                 }
             ]
