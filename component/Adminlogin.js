@@ -15,30 +15,25 @@ import {
   KeyboardAvoidingView,
 } from 'react-native';
 import {
-  Container,
-  Button,
-  Text,
-  Form,
-  Item,
-  Input,
-  Icon,
-  CheckBox,
-  Header,
-  Label,
+  Container, Button,  Text,  Form,  Item,  Input,  Icon,  CheckBox,  Header, Label,
 } from 'native-base';
 import {useNavigation} from '@react-navigation/native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import Server from "./Server";
 import AsyncStorage from "@react-native-community/async-storage";
+import Loader from "./Loader";
+
 
 const App = () => {
   let navigation = useNavigation();
 
-    const [email, setEmail] = React.useState('');
-    const [memberId, setMemberId] = React.useState('');
-    const [password, setPassword] = React.useState('');
+  const [email, setEmail] = React.useState('owais.raza@codup.io');
+  const [memberId, setMemberId] = React.useState('42201-2399157-3');
+  const [password, setPassword] = React.useState('test123');
+  const [loader, setloader] = React.useState(false);
 
     const LogIn = () => {
+      setloader(true)
       // navigation.navigate('Nav');
       // console.log(email,memberId,password)
       Server.post('api/login',{
@@ -51,7 +46,7 @@ const App = () => {
         AsyncStorage.setItem('Login_row',JSON.stringify(res.data)).
         then(res => {
           navigation.navigate('Adnav');
-          alert('Login Success');
+          setloader(false)
         })
       }).
       catch(err => alert('Invalid CNIC, Email or Password'));
@@ -86,7 +81,7 @@ const App = () => {
         </Text>
       </Header>
       {/* <Text style={styles.loginTxt}>Login</Text> */}
-
+      <Loader loading={loader} />
       <Image
         source={require('./assets/1.png')}
         style={{height: '25%', width: '25%', marginTop: '2%'}}

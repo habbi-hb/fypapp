@@ -113,7 +113,7 @@ const OurServices = () => {
                    setIdDel('');
                    setloader(false);
                    setModalDel2(false);
-                   reFresh(login_row);
+                   
                 }).
                 catch(err => {
                     alert(err);
@@ -154,6 +154,7 @@ const addbudget  = () => {
               setloader(false);
               setModal(false);
               setbudgetmodel(false)
+              reFresh(login_row);
           }).
           catch(err => {
               alert(err);

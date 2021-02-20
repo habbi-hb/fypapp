@@ -30,15 +30,20 @@ import {useNavigation} from '@react-navigation/native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import Server from "./Server";
 import AsyncStorage from "@react-native-community/async-storage";
+import Loader from "./Loader";
+
 
 const App = () => {
   let navigation = useNavigation();
 
-    const [email, setEmail] = React.useState('');
-    const [memberId, setMemberId] = React.useState('');
-    const [password, setPassword] = React.useState('');
+    const [email, setEmail] = React.useState('owais.raza@codup.io');
+    const [memberId, setMemberId] = React.useState('42201-2399157-3');
+    const [password, setPassword] = React.useState('test123');
+    const [loader, setloader] = React.useState(false);
+  
 
     const LogIn = () => {
+      setloader(true)
       // navigation.navigate('Nav');
       // console.log(email,memberId,password)
       Server.post('api/login',{
@@ -50,8 +55,10 @@ const App = () => {
         // console.log(res.data)
         AsyncStorage.setItem('Login_row',JSON.stringify(res.data)).
         then(res => {
+            
           navigation.navigate('Nav');
-          alert('Login Success');
+          
+          setloader(false)
         })
       }).
       catch(err => alert('Invalid CNIC, Email or Password'));
@@ -85,6 +92,7 @@ const App = () => {
           Login
         </Text>
       </Header>
+      <Loader loading={loader} />
       {/* <Text style={styles.loginTxt}>Login</Text> */}
 
       <Image

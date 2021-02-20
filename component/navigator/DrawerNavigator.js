@@ -1,5 +1,5 @@
-import * as React from 'react';
-import {Button, View, Text, Image} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {Button, View, Text, BackHandler, Image} from 'react-native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -7,7 +7,9 @@ import MyServices from '../MyServices';
 import DrawerContent from './DrawerContent';
 const Drawer = createDrawerNavigator();
 
+
 export default function RouteNav() {
+  
   return (
     <Drawer.Navigator initialRouteName="MyServices" drawerPosition="right"  drawerContent={(props) => <DrawerContent {...props}  />}>
       <Drawer.Screen

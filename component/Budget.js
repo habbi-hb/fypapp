@@ -93,10 +93,12 @@ const addbudget  = () => {
               }
             }).
             then(res => {
-                navigation.navigate('AdminDashboard');
+              setIdDel('');
+              setloader(true);
                 alert('added')
-                setloader(false);
+                
                 setModal(false);
+                reFresh(login_row);
             }).
             catch(err => {
                 alert(err);

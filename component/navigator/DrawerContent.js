@@ -51,6 +51,7 @@ export default function DrawerContent(props) {
           </View>
 
           <Drawer.Section style={styles.drawerSection}>
+            
             <DrawerItem
               icon={({color, size}) => (
                 <Icon name="home-outline" color={color} size={size} />
@@ -106,11 +107,16 @@ export default function DrawerContent(props) {
                 props.navigation.navigate('Events');
               }}
             />
-            <DrawerItem
+                <DrawerItem
               icon={({color, size}) => (
                 <Icon name="exit-to-app" color={color} size={size} />
               )}
-              label="Donate Now"
+              onPress={() => {
+                
+                props.navigation.navigate('Welcome');
+               
+              }}
+              label="Log Out"
             />
           </Drawer.Section>
         </View>

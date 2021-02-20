@@ -17,11 +17,12 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Icons from 'react-native-vector-icons/AntDesign';
 
 import {useNavigation} from '@react-navigation/native';
-
+import Loader from "../Loader";
 
 export default function DrawerContent(props) {
  
   const [expanded, setExpanded] = useState([false,false,false,false,false,false,false,false]);
+  const [loader, setloader] = React.useState(false);
  
   
 
@@ -49,7 +50,7 @@ export default function DrawerContent(props) {
               </View>
             </View>
           </View>
-
+          <Loader loading={loader} />
           <Drawer.Section style={styles.drawerSection}>
             <DrawerItem
               icon={({color, size}) => (
@@ -77,13 +78,13 @@ export default function DrawerContent(props) {
            
             <DrawerItem
               icon={({color, size}) => (
-                <Icon name="exit-to-app" color={color} size={size} />
+                <Icon name="room-service-outline" color={color} size={size} />
               )}
               label="Services"
             />
             <DrawerItem
               icon={({color, size}) => (
-                <Icon name="exit-to-app" color={color} size={size} />
+                <Icon name="call-split" color={color} size={size} />
               )}
               label="Announcement"
             />
@@ -91,7 +92,12 @@ export default function DrawerContent(props) {
               icon={({color, size}) => (
                 <Icon name="exit-to-app" color={color} size={size} />
               )}
-              label="Donate Now"
+              onPress={() => {
+                setloader(true);
+                props.navigation.navigate('Welcome');
+                setloader(false);
+              }}
+              label="Log Out"
             />
           </Drawer.Section>
         </View>

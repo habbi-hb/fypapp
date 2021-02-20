@@ -53,9 +53,6 @@ const ListAvatarExample = () => {
 
     const reFresh= (login_row) => {
       Server.get('api/event',{
-        headers:{
-            'Authorization': `Bearer ${login_row.access_token}`
-        }
     }).
     then(res => {
         // console.log(res.data);

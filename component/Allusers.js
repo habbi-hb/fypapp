@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   Container,
   Header,
@@ -16,20 +16,25 @@ import {
   Input,
   Button
 } from 'native-base';
-import {TouchableOpacity, FlatList, StyleSheet, Modal} from 'react-native';
+import {TouchableOpacity, FlatList, StyleSheet, Modal,Dimensions} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import AsyncStorage from "@react-native-community/async-storage";
+
 import Server from "./Server";
 
 
 import Loader from "./Loader";
+import { ScrollView } from 'react-native-gesture-handler';
+
+
+
+
 
 const OurServices = () => {
   let navigation = useNavigation();
   const [eventsData, setEventsData] = React.useState([]);
   const [loader, setloader] = React.useState(true);
-  const [modal, setModal] = React.useState(false);
-  const [service, setService] = React.useState('');
+  const [modcal, setModal] = React.useState([]);
   const [modalDel, setModalDel] = React.useState(false);
   const [modalDel2, setModalDel2] = React.useState(false);
   const [idDel, setIdDel] = React.useState('');
@@ -56,6 +61,7 @@ const reFresh= (login_row) => {
 then(res => {
     // console.log(res.data);
     setEventsData(res.data);
+    console.log(res.data[0].status)
     setloader(false);
 }).
 catch(err => {
@@ -97,9 +103,11 @@ const approvedUser = () => {
         }
       })
   }
- 
 
  
+
+    
+    
 
     
 
@@ -122,32 +130,36 @@ const approvedUser = () => {
         
       </Header>
       <Loader loading={loader} />
+     
         <FlatList
           style={{flex:1}}
             data={eventsData}
             renderItem={ ({item}) => 
-                <View style={styles.container}>
-                    <View style={{width:'90%'}}>
-                      <Text style={styles.title}>ID: {item.id}</Text>
-                      <Text style={styles.desc}>Name: {item.fname} {item.lname}</Text>
-                      <Text style={styles.desc}>Email: {item.email}</Text>
-                      <Text style={styles.desc}>CNIC: {item.cnic}</Text>
-                      <Text style={styles.desc}>Phone: {item.phone}</Text>
-                      <Text style={styles.desc}>Status: {item.status}</Text>
-                   
-                    </View>
-                   
-                <View style={{width:'10%',alignItems:'flex-end',alignSelf:'center'}}>
-                  <Icon onPress={()=>{setModalDel2(true);setIdDel(item.id)}}
-                  style={{marginBottom:10,color:'#86eb7c',}} active name="checkcircleo" type="AntDesign"  />
-                  <Icon style={{color:'#ff9d96',}} active name="closecircleo" type="AntDesign" />
-                </View>
-                    
-                  
-                </View>
+            <View style={styles.container}>
+            <View style={{width:'90%'}}>
+              <Text style={styles.title}>ID:{item.id} </Text>
+              <Text style={styles.desc}>Name: {item.fname} {item.lname}</Text>
+              <Text style={styles.desc}>Email: {item.email}</Text>
+              <Text style={styles.desc}>CNIC: {item.cnic}</Text>
+              <Text style={styles.desc}>Phone: {item.phone}</Text>
+              <Text style={styles.desc}>Status: {item.status}</Text>
+           
+            </View>
+           
+        <View style={{width:'10%',alignItems:'flex-end',alignSelf:'center'}}>
+          <Icon onPress={()=>{setModalDel2(true);setIdDel(e.id)}}
+          style={{marginBottom:10,color:'#86eb7c',}} active name="checkcircleo" type="AntDesign"  />
+          <Icon style={{color:'#ff9d96',}} active name="closecircleo" type="AntDesign" />
+        </View>
+            
+          
+        </View>
             }
             keyExtractor={(item) => item.id.toString()}
           />
+     
+   
+        
           <Modal
               animationType={'fade'}
               transparent={true}
@@ -198,6 +210,8 @@ const approvedUser = () => {
   );
 };
 
+
+
 const styles = StyleSheet.create({
     container: {
         alignItems:'center',
@@ -212,6 +226,7 @@ const styles = StyleSheet.create({
           paddingVertical:10,
           flexDirection:'row'
     },
+   
     title: {
         fontSize:16,
         fontWeight:'bold',

@@ -1,5 +1,5 @@
-import * as React from 'react';
-import {Button, View, Text, Image} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {Button, View, Text, BackHandler, Image} from 'react-native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -8,6 +8,7 @@ import AdDrawerContent from './AdDrawerContant';
 const Drawer = createDrawerNavigator();
 
 export default function RouteNav1() {
+  
   return (
     <Drawer.Navigator initialRouteName="Admindashboard" drawerPosition="right" 
      drawerContent={(props) => <AdDrawerContent {...props}  />}>

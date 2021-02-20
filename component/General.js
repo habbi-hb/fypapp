@@ -23,7 +23,8 @@ const App = () => {
         width: '100%',
       }}>
       <Header>
-        <Text style={{backgroundColor: '#3f51b5', width: '100%'}}></Text>
+        <Text style={{backgroundColor: '#3f51b5', width: '100%', color: '#fff',
+                      textAlign:"center", fontSize:30, margin: 7}}>General Users</Text>
       </Header>
       <Body style={{width: '100%'}}>
         <ScrollView>
@@ -42,13 +43,19 @@ const App = () => {
           <Button
             style={styles.btns}
             rounded
-            onPressIn={() => navigation.navigate('LoginScreen')}>
-            <Text style={styles.btnTxt}>Announcement and Events</Text>
+            onPressIn={() => navigation.navigate('Announcement')}>
+            <Text style={styles.btnTxt}>Announcement</Text>
           </Button>
           <Button
             style={styles.btns}
             rounded
-            onPressIn={() => navigation.navigate('DonateUs')}>
+            onPressIn={() => navigation.navigate('Events')}>
+            <Text style={styles.btnTxt}>Events</Text>
+          </Button>
+          <Button
+            style={styles.btns}
+            rounded
+            >
             <Text style={styles.btnTxt}>Donate Us</Text>
           </Button>
           <Text style={{fontSize: 18, color: 'gray', marginTop: '10%'}}>

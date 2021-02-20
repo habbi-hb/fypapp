@@ -38,7 +38,6 @@ import RouteNav1 from './component/Adminnavigator/AdDrawerNavigator';
 import AdminAnnouncements from './component/AdminAnnouncement';
 import AdminEvents from './component/AdminEvents';
 import AdminBudget from './component/Budget';
-import AdminDashboard from './component/Admindashboard'
 
 import Education from './component/Services/Education';
 import HouseHelp from './component/Services/Househelp';
@@ -53,6 +52,8 @@ import YouthandIT from './component/Services/YouthandIT';
 import Services from './component/Services';
 import AdminServices from './component/AdminServices';
 import getalluser from "./component/Allusers";
+
+import Checktab from "./component/checktab";
  
 import Events from './component/Events'
 import { floor } from 'react-native-reanimated';
@@ -83,11 +84,7 @@ const MainApp = () => {
         component={AdminLogin}
         options={{headerShown: false}}
         />
-         <Stack.Screen
-        name="AdminDashboard"
-        component={AdminDashboard}
-        options={{headerShown: false}}
-        />
+        
         <Stack.Screen
           name="Register"
           component={Register}
@@ -224,6 +221,14 @@ const MainApp = () => {
         component={YouthandIT}
         options={{headerShown: false}}
         />
+        <Stack.Screen
+        name="Checktab"
+        component={Checktab}
+        options={{headerShown: false}}
+        />
+
+
+
       </Stack.Navigator>
       
     </NavigationContainer>
