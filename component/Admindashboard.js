@@ -20,7 +20,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {useNavigation} from '@react-navigation/native';
 import * as Animatable from 'react-native-animatable';
-import Screen1 from './MyServices1';
+import Screen1 from './AdminServicesBar';
 import Screen2 from './MyServices2';
 
 const Tab = createBottomTabNavigator();
@@ -75,7 +75,7 @@ const App = () => {
             style={{height: '35%', width: '20%', borderRadius: 50}}
           />
           <Text style={{marginLeft: '4%', fontSize: 20, fontWeight: 'bold'}}>
-            Services
+            Admin Dashboard
           </Text>
         </View>
 
@@ -114,7 +114,6 @@ const App = () => {
         />
       </View>
       <ScrollView style={{flex: 1}}>
-      <Text style={{textAlign: 'center', fontSize: 24, fontWeight:'bold'}}>Admin</Text>
         <View
           style={{
             flexDirection: 'row',

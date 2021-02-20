@@ -75,7 +75,7 @@ const App = () => {
             style={{height: '35%', width: '20%', borderRadius: 50}}
           />
           <Text style={{marginLeft: '4%', fontSize: 20, fontWeight: 'bold'}}>
-            Services
+            User Dashboard
           </Text>
         </View>
 

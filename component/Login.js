@@ -55,13 +55,14 @@ const App = () => {
         // console.log(res.data)
         AsyncStorage.setItem('Login_row',JSON.stringify(res.data)).
         then(res => {
-            
+          setloader(true) 
           navigation.navigate('Nav');
           
           setloader(false)
         })
       }).
       catch(err => alert('Invalid CNIC, Email or Password'));
+      setloader(false)
     }
 
 

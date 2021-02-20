@@ -1,28 +1,35 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
-  Container,
-  Header,
- 
-  Left,
-  Body,
+    View,
+    StatusBar,
+    Image,
+    StyleSheet,
+    ScrollView,
+    key,
+    FlatList,
+    ActivityIndicator,
+    Modal, 
 
-  Text,
-  Icon,
-  View,
-  Item,
-  Input,
-  Button
-} from 'native-base';
-import {TouchableOpacity, FlatList, StyleSheet, Modal} from 'react-native';
+  } from 'react-native';
+  import {Container, Text, Icon, Item, Input, Card, CardItem, Button }from 'native-base';
 import {useNavigation} from '@react-navigation/native';
 import AsyncStorage from "@react-native-community/async-storage";
+import {TouchableOpacity} from 'react-native-gesture-handler';
 import Server from "./Server";
 
 
-import Loader from "./Loader";
+import Loader from "./Loader"
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
-const OurServices = () => {
+
+import * as Animatable from 'react-native-animatable';
+
+
+const Tab = createBottomTabNavigator();
+
+const App = () => {
   let navigation = useNavigation();
+  let [show, setShow] = useState(false);
   const [eventsData, setEventsData] = React.useState([]);
   const [loader, setloader] = React.useState(true);
   const [modal, setModal] = React.useState(false);
@@ -317,27 +324,91 @@ const addbudget  = () => {
 return;
 }
     
-
   return (
-    <Container>
-      <Header
+    <Container
+      style={{
+        backgroundColor: '#f2f2f2',
+        height: '100%',
+        width: '100%',
+      }}>
+      {show && (
+        <Animatable.View
+          style={{
+            height: '18%',
+            position: 'absolute',
+            zIndex: 9,
+            width: '25%',
+            top: '4%',
+            marginLeft: '40%',
+          }}
+          animation="lightSpeedIn">
+          <Item
+            rounded
+            style={{
+              width: '100%',
+              backgroundColor: 'lightgray',
+              color: 'white',
+            }}>
+            <Input placeholder="Search..." />
+          </Item>
+        </Animatable.View>
+      )}
+      <View
         style={{
-          textAlign: 'center',
-          alignItems: 'center',
-          backgroundColor: '#f2f2f2',
+          height: '15%',
+          flexDirection: 'row',
+          justifyContent: 'space-between',
         }}>
-        <Left>
-          <TouchableOpacity onPress={() => navigation.goBack()}>
-            <Icon active name="arrowleft" type="AntDesign" />
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+          <Image
+            source={require('./assets/2.jpg')}
+            style={{height: '35%', width: '20%', borderRadius: 50}}
+          />
+          <Text style={{marginLeft: '4%', fontSize: 20, fontWeight: 'bold'}}>
+            Admin Services
+          </Text>
+        </View>
+
+        <View
+          style={{
+            height: '100%',
+            alignItems: 'center',
+            justifyContent: 'center',
+            marginRight: '3%',
+            flexDirection: 'row',
+          }}>
+          <TouchableOpacity onPress={() => setShow(!show)}>
+            <Icon active name="search" type="FontAwesome" />
           </TouchableOpacity>
-        </Left>
-        <Body>
-          <Text>Services</Text>
-        </Body>
-        
-      </Header>
+          <TouchableOpacity onPress={() => navigation.navigate('Notification')}>
+            <Icon active name="bell" type="Entypo" />
+          </TouchableOpacity>
+        </View>
+      </View>
+      <View
+        style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+        }}>
+        <Item
+          full
+          style={{width: '85%', backgroundColor: 'lightgray', color: 'white'}}>
+          <Input placeholder="Icon Alignment in Textbox" />
+        </Item>
+        <Icon
+          name="menu"
+          type="Entypo"
+          style={{marginRight: '2%', fontSize: 40}}
+        />
+      </View>
       <Loader loading={loader} />
-        <FlatList
+      <FlatList
           style={{flex:1}}
             data={eventsData}
             renderItem={ ({item}) => 
@@ -437,8 +508,9 @@ return;
                       </Text>
                       <Item
                         style={{
-                          width: '95%',
-                          marginLeft: '2%',
+                          width: '80%',
+                          margin: 10,
+                          alignContent:'center',
                           borderColor: 'black',
                           borderWidth: 1,
                           marginBottom:10
@@ -468,50 +540,67 @@ return;
                 </View>
               </View>
             </Modal>
-         
            
-    
-    </Container>    
+    </Container>
   );
 };
-
 const styles = StyleSheet.create({
-    container: {
-        alignItems:'center',
-        alignSelf:'center',
-        borderRadius : 1,
-        width: '90%',
-        borderStyle: 'dashed',
-        borderWidth: 1,
-        borderColor: 'rgba(161,155,183,1)',
-          margin:10,
-          paddingHorizontal:10,
-          paddingVertical:10,
-          flexDirection:'row'
-    },
-    title: {
-        fontSize:16,
-        fontWeight:'bold',
-        color:'gray'
-    },
-    desc: {
-        fontSize:14,
-        // fontWeight:'bold',
-        color:'gray'
-    },
-    date: {
-        fontSize:12,
-        // fontWeight:'bold',
-        color:'gray'
-    },
-    btns: {
-      width: '85%',
-      marginLeft: 'auto',
-      marginRight: 'auto',
-      justifyContent: 'center',
-      marginTop: '4%',
-    },
+  container: {
+    alignItems:'center',
+    alignSelf:'center',
+    borderRadius : 1,
+    width: '90%',
+    borderStyle: 'dashed',
+    borderWidth: 1,
+    borderColor: 'rgba(161,155,183,1)',
+      margin:10,
+      paddingHorizontal:10,
+      paddingVertical:10,
+      flexDirection:'row'
+  },
+  title: {
+      fontSize:16,
+      fontWeight:'bold',
+      color:'gray'
+  },
+  desc: {
+      fontSize:14,
+      // fontWeight:'bold',
+      color:'gray'
+  },
+  date: {
+      fontSize:12,
+      // fontWeight:'bold',
+      color:'gray'
+  },
+  btns: {
+    width: '80%',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    justifyContent: 'center',
+    marginTop: '7%',
+  },
+  registerTitle: {
+    color: 'red',
+    textTransform: 'uppercase',
+    fontSize: 18,
+  },
+  form: {
+    height: '75%',
+    width: '95%',
+    marginTop: '10%',
+    flexDirection: 'column',
+    justifyContent: 'space-evenly',
+  },
+  inputOuter: {
    
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  text: {
+    textTransform: 'uppercase',
+    fontSize: 14,
+  },
 });
 
-export default OurServices; 
+export default App;
