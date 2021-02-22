@@ -61,17 +61,14 @@ export default function DrawerContent(props) {
                 props.navigation.navigate('HomeScreen');
               }}
             />
-            <DrawerItem
-              icon={({color, size}) => (
-                <Icons name="staro" color={color} size={size} />
-              )}
-              label="Overview"
-             
-            />
+         
             <DrawerItem
               icon={({color, size}) => (
                 <Icons name="like2" color={color} size={size} />
               )}
+              onPress={() => {
+                props.navigation.navigate('Adminupdateprofile');
+              }}
               label="Update Profile"
             
             />
@@ -80,12 +77,18 @@ export default function DrawerContent(props) {
               icon={({color, size}) => (
                 <Icon name="room-service-outline" color={color} size={size} />
               )}
+              onPress={() => {
+                props.navigation.navigate('AdminServices');
+              }}
               label="Services"
             />
             <DrawerItem
               icon={({color, size}) => (
                 <Icon name="call-split" color={color} size={size} />
               )}
+              onPress={() => {
+                props.navigation.navigate('AdminAnnouncements');
+              }}
               label="Announcement"
             />
             <DrawerItem

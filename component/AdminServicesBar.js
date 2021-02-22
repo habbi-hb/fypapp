@@ -382,31 +382,15 @@ return;
             marginRight: '3%',
             flexDirection: 'row',
           }}>
-          <TouchableOpacity onPress={() => setShow(!show)}>
-            <Icon active name="search" type="FontAwesome" />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('Notification')}>
-            <Icon active name="bell" type="Entypo" />
-          </TouchableOpacity>
-        </View>
-      </View>
-      <View
-        style={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-        }}>
-        <Item
-          full
-          style={{width: '85%', backgroundColor: 'lightgray', color: 'white'}}>
-          <Input placeholder="Icon Alignment in Textbox" />
-        </Item>
-        <Icon
+          <Icon
           name="menu"
           type="Entypo"
           style={{marginRight: '2%', fontSize: 40}}
+          onPress={() => navigation.openDrawer()}
         />
+        </View>
       </View>
+      
       <Loader loading={loader} />
       <FlatList
           style={{flex:1}}
@@ -510,7 +494,6 @@ return;
                         style={{
                           width: '80%',
                           margin: 10,
-                          alignContent:'center',
                           borderColor: 'black',
                           borderWidth: 1,
                           marginBottom:10

@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import  React, {useEffect, useState}from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   View,
   StatusBar,
@@ -21,50 +21,56 @@ import {Container, Text, Icon, Item, Input, Card, CardItem} from 'native-base';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {useNavigation} from '@react-navigation/native';
-import * as Animatable from 'react-native-animatable';
 import AsyncStorage from "@react-native-community/async-storage";
 import Server from "./Server";
-
-
 import Loader from "./Loader";
+import * as Animatable from 'react-native-animatable';
 
 const Tab = createBottomTabNavigator();
 
 const App = () => {
   let navigation = useNavigation();
   let [show, setShow] = useState(false);
+  const [date, setDate] = React.useState(new Date(1598051730000));
   const [eventsData, setEventsData] = React.useState([]);
   const [loader, setloader] = React.useState(true);
-  const [modal, setModal] = React.useState(false);
-  const [service, setService] = React.useState('');
-  const [modalDel, setModalDel] = React.useState(false);
-  const [idDel, setIdDel] = React.useState('');
+  
+
+
+  const onChange = (event, selectedDate) => {
+    const currentDate = selectedDate || date;
+    setShow(Platform.OS === 'ios');
+    setDate(currentDate);
+  };
 
     useEffect(()=>{
         AsyncStorage.getItem('Login_row').
         then(val => {
             if (val == null) {
+                setloader(false);
                 navigation.navigate('LoginScreen');
             } else {
                 const login_row = JSON.parse(val);
                 // console.log(login_row.access_token);
-                Server.get('api/service',{
-                    headers:{
-                        'Authorization': `Bearer ${login_row.access_token}`
-                    }
-                }).
-                then(res => {
-                    console.log(login_row.access_token);
-                    setEventsData(res.data.services);
-                    setloader(false);
-                }).
-                catch(err => {
-                    alert(err);
-                    setloader(false);
-                });
+                reFresh(login_row);
             }
-        })
+        });
     },[]);
+
+    const reFresh= (login_row) => {
+      Server.get('api/announcement',{
+    }).
+    then(res => {
+        // console.log(res.data);
+        setEventsData(res.data);
+        setloader(false);
+    }).
+    catch(err => {
+      alert(err);
+      setloader(false)
+    });
+    }
+
 
   return (
     <Container
@@ -124,27 +130,11 @@ const App = () => {
             marginRight: '3%',
             flexDirection: 'row',
           }}>
-             <Icon
-          name="menu"
-          type="Entypo"
-          style={{marginRight: '2%', fontSize: 40}}
-          onPress={() => navigation.openDrawer()}
-        />
           
+          <TouchableOpacity onPress={() => navigation.navigate('Settings')}>
+            <Icon active name="gear" type="FontAwesome" />
+          </TouchableOpacity>
         </View>
-      </View>
-      <View
-        style={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-        }}>
-        <Item
-          full
-          style={{width: '100%', backgroundColor: 'lightgray', color: 'white'}}>
-          <Input placeholder="Icon Alignment in Textbox" />
-        </Item>
-       
       </View>
       <Loader loading={loader} />
       <FlatList
@@ -152,22 +142,31 @@ const App = () => {
             data={eventsData}
             renderItem={ ({item}) => 
                 <View style={styles.container}>
-                    <View style={{width:'90%'}}>
-                      <Text style={styles.title}> {item.services}</Text>
-                      <Text style={styles.desc}> {item.form_object}</Text>
-                      <Text style={styles.desc}> status '{item.status}'</Text>
-                      <Text style={styles.date}> {item.note}</Text>
-                    </View>
-                    
-                    
+                <View style={{width:'90%'}}>
+                <Text style={styles.title}> {item.title}</Text>
+                    <Text style={styles.desc}> {item.description}</Text>
+                    <Text style={styles.date}> Date : {item.expiry}</Text>
                 </View>
+                
+                <View style={{width:'10%',alignItems:'flex-end',alignSelf:'center'}}>
+                
+                </View>
+            </View>
             }
             keyExtractor={(item) => item.id.toString()}
+
           />
     </Container>
   );
 };
 const styles = StyleSheet.create({
+  btns: {
+    width: '80%',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    justifyContent: 'center',
+    marginTop: '7%',
+  },
   container: {
     alignItems:'center',
     alignSelf:'center',
@@ -196,12 +195,39 @@ const styles = StyleSheet.create({
       // fontWeight:'bold',
       color:'gray'
   },
+  modalBody:{
+    flex:1,
+    justifyContent:'center',
+    alignItems:'center',
+    backgroundColor:'rgba(0,0,0,0.5)',
+    borderRadius:5,
+    padding:10,
+    alignItems:'center'
+  },
+  modalContainer:{
+    height:500,
+    width:300,
+    backgroundColor:'#fff',
+    borderRadius:15,
+    justifyContent:'space-between',
+    alignItems:'center',
+    alignSelf:'center'
+  },
+  modalContainerDel:{
+    height:150,
+    width:300,
+    backgroundColor:'#fff',
+    borderRadius:15,
+    justifyContent:'space-between',
+    alignItems:'center',
+    alignSelf:'center'
+  },
   btns: {
-    width: '80%',
+    width: '85%',
     marginLeft: 'auto',
     marginRight: 'auto',
     justifyContent: 'center',
-    marginTop: '7%',
+    marginTop: '4%',
   },
   registerTitle: {
     color: 'red',

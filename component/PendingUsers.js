@@ -104,8 +104,9 @@ const approvedUser = () => {
       })
   }
   const myfun = ({item}) => {
+      
    
-      if (item.status === 'Approved')
+      if (item.status === "Pending")
       {
         return(
           
@@ -120,7 +121,11 @@ const approvedUser = () => {
            
             </View>
            
-        
+        <View style={{width:'10%',alignItems:'flex-end',alignSelf:'center'}}>
+          <Icon onPress={()=>{setModalDel2(true);setIdDel(e.id)}}
+          style={{marginBottom:10,color:'#86eb7c',}} active name="checkcircleo" type="AntDesign"  />
+          <Icon style={{color:'#ff9d96',}} active name="closecircleo" type="AntDesign" />
+        </View>
             
           
         </View>
@@ -151,17 +156,9 @@ const approvedUser = () => {
           </TouchableOpacity>
         </Left>
         <Body>
-          <Text> Users</Text>
+          <Text>pending Users</Text>
         </Body>
-        <Right>
-        <TouchableOpacity style={{alignItems: 'center'}} 
-        onPress={() => {
-                navigation.navigate('Pendingusers');
-              }}>
-            <Icon active name="pending" type="MaterialIcons" />
-            <Text>Pending</Text>
-          </TouchableOpacity>
-        </Right>
+        
         
       </Header>
       <Loader loading={loader} />

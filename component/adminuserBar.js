@@ -1,32 +1,29 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
-import  React, {useEffect, useState}from 'react';
+import React, {useEffect, useState} from 'react';
 import {
-  View,
-  StatusBar,
-  Image,
-  StyleSheet,
-  ScrollView,
-  key,
-  FlatList,
-  ActivityIndicator
-} from 'react-native';
-import {Container, Text, Icon, Item, Input, Card, CardItem} from 'native-base';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {TouchableOpacity} from 'react-native-gesture-handler';
+    View,
+    StatusBar,
+    Image,
+    StyleSheet,
+    ScrollView,
+    key,
+    FlatList,
+    ActivityIndicator,
+    Modal, 
+
+  } from 'react-native';
+  import {Container, Text, Icon, Item, Input, Card, CardItem, Button }from 'native-base';
 import {useNavigation} from '@react-navigation/native';
-import * as Animatable from 'react-native-animatable';
 import AsyncStorage from "@react-native-community/async-storage";
+import {TouchableOpacity} from 'react-native-gesture-handler';
 import Server from "./Server";
 
 
-import Loader from "./Loader";
+import Loader from "./Loader"
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+
+
+import * as Animatable from 'react-native-animatable';
+
 
 const Tab = createBottomTabNavigator();
 
@@ -36,36 +33,115 @@ const App = () => {
   const [eventsData, setEventsData] = React.useState([]);
   const [loader, setloader] = React.useState(true);
   const [modal, setModal] = React.useState(false);
-  const [service, setService] = React.useState('');
+  const [budgetmodel, setbudgetmodel] = React.useState(false);
   const [modalDel, setModalDel] = React.useState(false);
+  const [modalDel2, setModalDel2] = React.useState(false);
   const [idDel, setIdDel] = React.useState('');
+  const [edu, setedu] = React.useState('');
+  const [house, sethouse] = React.useState('');
+
+  const [medical, setmedical] = React.useState('');
+  const [marriage, setmarriage] = React.useState('');
+  const [other, setother] = React.useState(''); 
+  const [Budget, setbudget] = React.useState(0);
+  const [ser, setser] = React.useState('')
+
+
+
+
+
+
 
     useEffect(()=>{
-        AsyncStorage.getItem('Login_row').
+      AsyncStorage.getItem('Login_row').
+      then(val => {
+          if (val == null) {
+              setloader(false);
+              navigation.navigate('LoginScreen');
+          } else {
+              const login_row = JSON.parse(val);
+              // console.log(login_row.access_token);
+              reFresh(login_row);
+          }
+      });
+  },[]);
+  
+  const reFresh= (login_row) => {
+    Server.get('api/getuser/all',{
+      headers:{
+          'Authorization': `Bearer ${login_row.access_token}`
+      }
+  }).
+  then(res => {
+      // console.log(res.data);
+      setEventsData(res.data);
+      console.log(res.data[0].status)
+      setloader(false);
+  }).
+  catch(err => {
+    alert(err);
+    setloader(false)
+  });
+  }
+  
+  const approvedUser = () => {
+      setloader(true);
+      setModalDel(false);
+      
+      AsyncStorage.getItem('Login_row').
         then(val => {
             if (val == null) {
                 navigation.navigate('LoginScreen');
             } else {
-                const login_row = JSON.parse(val);
-                // console.log(login_row.access_token);
-                Server.get('api/service',{
-                    headers:{
-                        'Authorization': `Bearer ${login_row.access_token}`
-                    }
-                }).
-                then(res => {
-                    console.log(login_row.access_token);
-                    setEventsData(res.data.services);
-                    setloader(false);
-                }).
-                catch(err => {
-                    alert(err);
-                    setloader(false);
-                });
-            }
+              const login_row = JSON.parse(val);
+              Server.put(`api/update_user/${idDel}`,{
+                  "status" : "Approved",
+              
+              },
+              {
+                headers:{
+                    'Authorization': `Bearer ${login_row.access_token}`
+                }
+              }).
+              then(res => {
+                  navigation.navigate('AdminDashboard');
+                 alert('approved')
+                 setIdDel('');
+                 setloader(false);
+                 setModalDel2(false);
+              }).
+              catch(err => {
+                  alert(err);
+                  setloader(false);
+              });
+          }
         })
-    },[]);
-
+    }
+    const myfun = ({item}) => {
+     
+        if (item.status === 'Approved')
+        {
+          return(
+            
+             <View style={styles.container}>
+              <View style={{width:'90%'}}>
+                <Text style={styles.title}>ID:{item.id} </Text>
+                <Text style={styles.desc}>Name: {item.fname} {item.lname}</Text>
+                <Text style={styles.desc}>Email: {item.email}</Text>
+                <Text style={styles.desc}>CNIC: {item.cnic}</Text>
+                <Text style={styles.desc}>Phone: {item.phone}</Text>
+                <Text style={styles.desc}>Status: {item.status}</Text>
+             
+              </View>
+             
+         
+              
+            
+          </View>
+          )
+        }
+    
+  }
   return (
     <Container
       style={{
@@ -112,7 +188,7 @@ const App = () => {
             style={{height: '35%', width: '20%', borderRadius: 50}}
           />
           <Text style={{marginLeft: '4%', fontSize: 20, fontWeight: 'bold'}}>
-            Services
+            Admin Services
           </Text>
         </View>
 
@@ -124,46 +200,26 @@ const App = () => {
             marginRight: '3%',
             flexDirection: 'row',
           }}>
-             <Icon
+          <Icon
           name="menu"
           type="Entypo"
           style={{marginRight: '2%', fontSize: 40}}
           onPress={() => navigation.openDrawer()}
         />
-          
         </View>
-      </View>
-      <View
-        style={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-        }}>
-        <Item
-          full
-          style={{width: '100%', backgroundColor: 'lightgray', color: 'white'}}>
-          <Input placeholder="Icon Alignment in Textbox" />
-        </Item>
-       
       </View>
       <Loader loading={loader} />
       <FlatList
           style={{flex:1}}
             data={eventsData}
-            renderItem={ ({item}) => 
-                <View style={styles.container}>
-                    <View style={{width:'90%'}}>
-                      <Text style={styles.title}> {item.services}</Text>
-                      <Text style={styles.desc}> {item.form_object}</Text>
-                      <Text style={styles.desc}> status '{item.status}'</Text>
-                      <Text style={styles.date}> {item.note}</Text>
-                    </View>
-                    
-                    
-                </View>
-            }
+            renderItem={ myfun}
             keyExtractor={(item) => item.id.toString()}
           />
+       
+     
+   
+   
+     
     </Container>
   );
 };
@@ -216,7 +272,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
   },
   inputOuter: {
-    flexDirection: 'row',
+   
     justifyContent: 'center',
     alignItems: 'center',
   },

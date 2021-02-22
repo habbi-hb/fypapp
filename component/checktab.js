@@ -25,8 +25,7 @@ import {
   Button
 } from 'native-base';
 import {useNavigation} from '@react-navigation/native';
-import {ScrollView} from 'react-native-gesture-handler';
-import { TabView, SceneMap } from 'react-native-tab-view';
+
 
 var Listtab =[
   {

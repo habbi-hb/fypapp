@@ -47,6 +47,8 @@ import Arbitration from './component/Services/Arbitration';
 import GraveYard from './component/Services/GraveYard';
 import Employement from './component/Services/Employment';
 import YouthandIT from './component/Services/YouthandIT';
+import Adminupdateprofile from './component/Adminupdateprofile';
+import PendingUsers from './component/PendingUsers';
 
 
 import Services from './component/Services';
@@ -103,6 +105,11 @@ const MainApp = () => {
            <Stack.Screen
           name="Adnav"
           component={AdNav}
+          options={{headerShown: false}}
+        />
+           <Stack.Screen
+          name="Pendingusers"
+          component={PendingUsers}
           options={{headerShown: false}}
         />
           <Stack.Screen
@@ -224,6 +231,11 @@ const MainApp = () => {
         <Stack.Screen
         name="Checktab"
         component={Checktab}
+        options={{headerShown: false}}
+        />
+        <Stack.Screen
+        name="Adminupdateprofile"
+        component={Adminupdateprofile}
         options={{headerShown: false}}
         />
 

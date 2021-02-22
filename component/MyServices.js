@@ -21,6 +21,7 @@ import {TouchableOpacity} from 'react-native-gesture-handler';
 import {useNavigation} from '@react-navigation/native';
 import * as Animatable from 'react-native-animatable';
 import Screen1 from './MyServices1';
+import Screen4 from "./MYScreen3";
 import Screen2 from './MyServices2';
 
 const Tab = createBottomTabNavigator();
@@ -87,32 +88,16 @@ const App = () => {
             marginRight: '3%',
             flexDirection: 'row',
           }}>
-          <TouchableOpacity onPress={() => setShow(!show)}>
-            <Icon active name="search" type="FontAwesome" />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('Notification')}>
-            <Icon active name="bell" type="Entypo" />
-          </TouchableOpacity>
-        </View>
-      </View>
-      <View
-        style={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-        }}>
-        <Item
-          full
-          style={{width: '85%', backgroundColor: 'lightgray', color: 'white'}}>
-          <Input placeholder="Icon Alignment in Textbox" />
-        </Item>
-        <Icon
+             <Icon
           name="menu"
           type="Entypo"
           style={{marginRight: '2%', fontSize: 40}}
           onPress={() => navigation.openDrawer()}
         />
+          
+        </View>
       </View>
+   
       <ScrollView>
       <View
           style={{
@@ -556,9 +541,9 @@ const Services = () => {
           ),
         }}
       />
-      <Tab.Screen
+        <Tab.Screen
         name="Home5"
-        component={Screen2}
+        component={Screen4}
         options={{
           tabBarLabel: () => {
             return (
@@ -571,7 +556,7 @@ const Services = () => {
                   fontSize: 12,
                 }}>
                 {' '}
-                More
+                Annoucement
               </Text>
             );
           },
@@ -584,16 +569,18 @@ const Services = () => {
                 justifyContent: 'center',
                 alignItems: 'center',
               }}
-              onPress={() => setCurrentScreen(Screen2)}>
+              onPress={() => setCurrentScreen(Screen1)}
+             >
               <Icon
-                type="Feather"
-                name="menu"
+                type="MaterialCommunityIcons"
+                name="call-split"
                 style={{fontSize: 25, color: 'white'}}
               />
             </View>
           ),
         }}
       />
+
     </Tab.Navigator>
   );
 };

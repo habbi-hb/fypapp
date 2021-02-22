@@ -158,7 +158,7 @@ const App = () => {
           },
         ]}>
         {' '}
-        Update your Profile
+        Update Admin Profile
       </Text>
     </Header>
     <Loader loading={loader} />
